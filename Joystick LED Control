@@ -1,0 +1,97 @@
+// Joystick_LED_Control
+
+// Define pin assignments
+int x_position = A0;
+int y_position = A1;
+int s1 = 3;
+int s2 = 4;
+int s3 = 5;
+int s4 = 6;
+int s5 = 7;
+
+void setup() {
+  // Initialize joystick inputs
+  pinMode(x_position, INPUT);
+  pinMode(y_position, INPUT);
+
+  // Initialize LED outputs
+  pinMode(s1, OUTPUT);
+  pinMode(s2, OUTPUT);
+  pinMode(s3, OUTPUT);
+  pinMode(s4, OUTPUT);
+  pinMode(s5, OUTPUT);
+}
+
+void loop() {
+  // Read joystick positions
+  int x_value = analogRead(x_position);
+  int y_value = analogRead(y_position);
+
+  // If joystick is pushed upwards
+  if (y_value < 400) {
+    digitalWrite(s1, HIGH);
+    delay(100);
+    digitalWrite(s1, LOW);
+    digitalWrite(s2, HIGH);
+    delay(100);
+    digitalWrite(s2, LOW);
+    digitalWrite(s3, HIGH);
+    delay(100);
+    digitalWrite(s3, LOW);
+    digitalWrite(s4, HIGH);
+    delay(100);
+    digitalWrite(s4, LOW);
+    digitalWrite(s5, HIGH);
+    delay(100);
+    digitalWrite(s5, LOW);
+    delay(300);
+  }
+
+  // If joystick is pushed downwards
+  if (y_value > 700) {
+    digitalWrite(s5, HIGH);
+    delay(100);
+    digitalWrite(s5, LOW);
+    digitalWrite(s4, HIGH);
+    delay(100);
+    digitalWrite(s4, LOW);
+    digitalWrite(s3, HIGH);
+    delay(100);
+    digitalWrite(s3, LOW);
+    digitalWrite(s2, HIGH);
+    delay(100);
+    digitalWrite(s2, LOW);
+    digitalWrite(s1, HIGH);
+    delay(100);
+    digitalWrite(s1, LOW);
+    delay(300);
+  }
+
+  // If joystick is pushed to the right
+  if (x_value > 700) {
+    digitalWrite(s3, HIGH);
+    delay(100);
+    digitalWrite(s3, LOW);
+    digitalWrite(s4, HIGH);
+    delay(100);
+    digitalWrite(s4, LOW);
+    digitalWrite(s5, HIGH);
+    delay(100);
+    digitalWrite(s5, LOW);
+    delay(300);
+  }
+
+  // If joystick is pushed to the left
+  if (x_value < 400) {
+    digitalWrite(s3, HIGH);
+    delay(100);
+    digitalWrite(s3, LOW);
+    digitalWrite(s2, HIGH);
+    delay(100);
+    digitalWrite(s2, LOW);
+    digitalWrite(s1, HIGH);
+    delay(100);
+    digitalWrite(s1, LOW);
+    delay(300);
+  }
+}
